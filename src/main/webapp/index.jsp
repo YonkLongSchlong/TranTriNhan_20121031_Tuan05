@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="dev.yonk.trantrinhan_20121031_tuan05.models.Product" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -27,11 +29,11 @@
 <body>
 <p><a href="${pageContext.request.contextPath}/ShoppingCart.jsp">View Cart</a></p>
 
-<c:forEach items="${ds}" var="sp">
+<c:forEach items="${requestScope.list}" var="sp">
     <div class="a">
         <form name="modelDetail" method="POST" action="${pageContext.request.contextPath}/CartController">
                 ${sp.model} <br />
-            <img src='/ShoppingCartJSPSession${sp.imgURL}' class="hinh" alt="Product Image"> <br />
+            <img src='${sp.imgUrl}' class="hinh" alt="Product Image"> <br />
             Price: ${sp.price} <br />
             <input type="text" size="2" value="1" name="quantity"><br>
             <input type="hidden" name="modelNo" value="${sp.id}">

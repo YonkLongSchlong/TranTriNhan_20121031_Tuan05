@@ -6,7 +6,7 @@
 <html>
 <head><title>Shopping Cart</title></head>
 <body>
-    <p><a href="${pageContext.request.contextPath}/index.jsp">Product List</a></p>
+    <p><a href="${pageContext.request.contextPath}/product">Product List</a></p>
     <table width="100%" border="1">
         <tr bgcolor="#CCCCCC">
             <td>Model Description</td>
@@ -24,7 +24,10 @@
         <c:forEach var="cartItem" items="${cart.cartItems}" varStatus="counter">
             <form name="item" method="POST" action="${pageContext.request.contextPath}/CartController">
                 <tr>
-                    <td><c:out value="${cartItem.partNumber}" /> <br /><c:out value="${cartItem.modelDescription}" /></td>
+                    <td>
+                        <c:out value="${cartItem.partNumber}" /> <br />
+                        <c:out value="${cartItem.modelDescription}" />
+                    </td>
                     <td>
                         <input type="hidden" name="itemIndex" value="<c:out value="${counter.count}"/>"/>
                         <input type="text" name="quantity" value="<c:out value="${cartItem.quantity}"/>" size="2"/>

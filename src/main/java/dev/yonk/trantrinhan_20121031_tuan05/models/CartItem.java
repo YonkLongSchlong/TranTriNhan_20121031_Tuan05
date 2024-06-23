@@ -3,48 +3,59 @@ package dev.yonk.trantrinhan_20121031_tuan05.models;
 public class CartItem {
     private String strPartNumber;
     private String strModelDescription;
-    private double iQuantity;
+
+    private double dbUnitCost;
+    private int iQuantity;
     private double dblTotalCost;
 
     public CartItem() {
     }
 
-    public CartItem(String strPartNumber, String strModelDescription, double iQuantity, double dblTotalCost) {
+    public CartItem(String strPartNumber, String strModelDescription, double dbUnitCost, int iQuantity, double dblTotalCost) {
         this.strPartNumber = strPartNumber;
         this.strModelDescription = strModelDescription;
+        this.dbUnitCost = dbUnitCost;
         this.iQuantity = iQuantity;
         this.dblTotalCost = dblTotalCost;
     }
 
-    public String getStrPartNumber() {
+    public String getPartNumber() {
         return strPartNumber;
     }
 
-    public void setStrPartNumber(String strPartNumber) {
+    public void setPartNumber(String strPartNumber) {
         this.strPartNumber = strPartNumber;
     }
 
-    public String getStrModelDescription() {
+    public String getModelDescription() {
         return strModelDescription;
     }
 
-    public void setStrModelDescription(String strModelDescription) {
+    public void setModelDescription(String strModelDescription) {
         this.strModelDescription = strModelDescription;
     }
 
-    public double getiQuantity() {
+    public double getUnitCost() {
+        return dbUnitCost;
+    }
+
+    public void setUnitCost(double dbUnitCost) {
+        this.dbUnitCost = dbUnitCost;
+    }
+
+    public int getQuantity() {
         return iQuantity;
     }
 
-    public void setiQuantity(double iQuantity) {
+    public void setQuantity(int iQuantity) {
         this.iQuantity = iQuantity;
     }
 
-    public double getDblTotalCost() {
+    public double getTotalCost() {
         return dblTotalCost;
     }
 
-    public void setDblTotalCost(double dblTotalCost) {
+    public void setTotalCost(double dblTotalCost) {
         this.dblTotalCost = dblTotalCost;
     }
 

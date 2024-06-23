@@ -11,7 +11,11 @@ public class Cart {
         return alCartItems.size();
     }
 
-    public void addCartItem(CartItem cartItem) {
+    public void addCartItem(String model, String description, String strPrice, String strQuantity) {
+        int quantity = Integer.parseInt(strQuantity);
+        double unitCost = Double.parseDouble(strPrice);
+        double total =  unitCost * quantity;
+        CartItem cartItem = new CartItem(model, description, unitCost, quantity, total);
         alCartItems.add(cartItem);
         calculateOrderTotal();
     }
@@ -26,8 +30,8 @@ public class Cart {
         int index = Integer.parseInt(strItemIndex);
         int quantity = Integer.parseInt(strQuantity);
         CartItem cartItem = alCartItems.get(index - 1);
-        cartItem.setiQuantity(quantity);
-        cartItem.setDblTotalCost(cartItem.getDblTotalCost() * quantity);
+        cartItem.setQuantity(quantity);
+        cartItem.setTotalCost(cartItem.getUnitCost() * quantity);
 
         calculateOrderTotal();
     }
@@ -49,18 +53,18 @@ public class Cart {
         return orderTotal;
     }
 
-    public List<CartItem> getAlCartItems() {
+    public List<CartItem> getCartItems() {
         return alCartItems;
     }
 
-    public void setAlCartItems(List<CartItem> alCartItems) {
+    public void setCartItems(List<CartItem> alCartItems) {
         this.alCartItems = alCartItems;
     }
 
     protected void calculateOrderTotal() {
         double total = 0;
         for (CartItem alCartItem : alCartItems) {
-            total += alCartItem.getDblTotalCost();
+            total += alCartItem.getTotalCost();
         }
         setOrderTotal(total);
     }
